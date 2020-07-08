@@ -1,0 +1,15 @@
+{
+  "name": "epitech-student-credit",
+  "version": "1.0.0",
+  "description": "API for the Epitech Student Roadblock front-end",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "author": "William GAUDFRIN",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
