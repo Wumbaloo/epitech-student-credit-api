@@ -25,10 +25,10 @@ function getUserCookie(autologin) {
                 if (resp.headers['set-cookie'] && resp.headers['set-cookie'].length > 1)
                     resolve(resp.headers['set-cookie'][1]);
                 else
-                    reject(Error("Can't get the user token. Please check your autologin."));
+                    reject("Can't get the user token. Please check your autologin.");
             });
         }).on('error', (err) => {
-                reject(Error("Can't get the user token. Please check your autologin."));
+                reject("Can't get the user token. Please check your autologin.");
         });
     });
     return (promise);
@@ -50,10 +50,10 @@ function queryIntra(autologin, apiPath) {
                 resolve(JSON.parse(data));
             })
         }).on('error', (err) => {
-            reject(Error("Can't call the intra.epitech.eu API, please check the called path."));
+            reject("Can't call the intra.epitech.eu API, please check the called path.");
         });
       }).catch((err) => {
-        reject(err);
+        reject({message: err, error: "error"});
       })
     });
     return (promise);
@@ -74,8 +74,7 @@ router.route('/student/info')
             res.json({message: err, method: req.method, type: "error"});
         })
     }).catch((err) => {
-        console.log("Err")
-        res.json({message: err, method: req.method, type: "error"});
+        res.json(err);
     });
 });
 
