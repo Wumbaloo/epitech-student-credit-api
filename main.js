@@ -47,7 +47,11 @@ function queryIntra(autologin, apiPath) {
             });
 
             resp.on('end', () => {
-                resolve(JSON.parse(data));
+                let answer = JSON.parse(data);
+                if (answer['studentyear'] > 3)
+                    reject("Sorry, your year is not managed by this platform. You're to skilled.");
+                else
+                    resolve(answer);
             })
         }).on('error', (err) => {
             reject("Can't call the intra.epitech.eu API, please check the called path.");
